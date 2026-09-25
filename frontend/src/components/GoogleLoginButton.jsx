@@ -1,17 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useAuth } from '../hooks/useAuth';
 
-/**
- * Renders Google's own "Sign in with Google" button via Google Identity
- * Services (GIS) and forwards the resulting ID token to the backend.
- *
- * Requires the GIS script in your HTML:
- *   <script src="https://accounts.google.com/gsi/client" async defer></script>
- *
- * And VITE_GOOGLE_CLIENT_ID set to the same client ID as the backend's
- * GOOGLE_CLIENT_ID — they must match or verifyIdToken() on the backend
- * will reject every token.
- */
+
 export default function GoogleLoginButton({ onSuccess, onError }) {
   const buttonRef = useRef(null);
   const { loginWithGoogle } = useAuth();

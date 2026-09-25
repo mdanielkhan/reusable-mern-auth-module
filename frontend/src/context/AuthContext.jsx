@@ -5,9 +5,7 @@ export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  // checkingAuth distinguishes "we don't know yet" from "definitely logged
-  // out" — without it, a protected route redirects to /login for a split
-  // second on every page refresh before the /me call resolves.
+
   const [checkingAuth, setCheckingAuth] = useState(true);
 
   const fetchMe = useCallback(async () => {
@@ -33,7 +31,7 @@ export function AuthProvider({ children }) {
 
   const register = useCallback(async (name, email, password) => {
     const { data } = await api.post('/auth/register', { name, email, password });
-    return data; // caller decides whether to redirect to "check your email"
+    return data; 
   }, []);
 
   const loginWithGoogle = useCallback(async (idToken) => {
